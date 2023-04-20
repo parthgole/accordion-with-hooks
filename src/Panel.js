@@ -1,13 +1,16 @@
-function Panel({toggle,panelData}) {
+function Panel({toggle,panelData,panelDataId}) {
     return (
       <>
-        <h2>Panel</h2>
-        <button onClick={()=>toggle(panelData)}>Panel</button>
-        {panelData && (
-        <>
-        <p>{panelData.heading}</p>
-        <p>{panelData.arrayData}</p>
-        </>
+        {panelData.map((item,index)=>(
+        
+        <div key={index}> 
+        <h2>{item.heading}</h2>
+        <button onClick={()=>toggle(index)}>{item.heading}</button>  
+
+        {index===panelDataId?<p>{item.arryaData}</p>:<></>}
+
+        </div>)
+        
         )}
        
       </>
