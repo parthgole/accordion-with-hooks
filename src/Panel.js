@@ -1,18 +1,15 @@
-function Panel({toggle,panelData,panelDataId}) {
+function Panel({toggle,heading,bookDescription,activePanelId,activeState}) {
     return (
       <>
-        {panelData.map((item,index)=>(
-        
-        <div key={index}> 
-        <h2>{item.heading}</h2>
-        <button onClick={()=>toggle(index)}>{item.heading}</button>  
+        <div  onClick={()=>toggle(activePanelId)} style={{border:'1px solid black',backgroundColor:'#fffdd0',width:'80%',height:'auto',margin:'10px auto 5px'}}> 
+        <h2>{heading}</h2>
+        {/* <button onClick={()=>toggle(activePanelId)} style={{border:'none',backgroundColor:'green',color:'white'}}>{heading}</button>   */}
 
-        {index===panelDataId?<p>{item.arryaData}</p>:<></>}
+        {activePanelId===activeState?
+        <p style={{backgroundColor:'orange',border:'1px solid black',width:'80%',height:'20px',margin:'5px auto 5px'}}>{bookDescription}</p>:<></>}
 
-        </div>)
-        
-        )}
-       
+        </div>
+              
       </>
     );
   }

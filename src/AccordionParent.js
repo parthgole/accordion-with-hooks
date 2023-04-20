@@ -1,26 +1,32 @@
 import { useState } from 'react';
 import Panel from './Panel';
-// import PanelB from './PanelB';
-// import PanelC from './PanelC';
 
 function AccordionParent() {
-  const arrayPanelData=[{heading:'PanelA',arryaData:'PanelA'},{heading:'PanelB',arryaData:'PanelB'},
-  {heading:'PanelC',arryaData:'PanelC'},{heading:'PanelD',arryaData:'PanelD'}];
-  // const [activePanel,setActivePanel] = useState(0);
-  const [panelData,setPanelData] = useState(-1);
+
+  const bookData=[{heading:'PanelA',Description:'PanelA'},{heading:'PanelB',Description:'PanelB'},
+  {heading:'PanelC',Description:'PanelC'},{heading:'PanelD',Description:'PanelD'},{heading:'PanelE',Description:'PanelE'}];
+
+  const [activePanel,setActivePanel] = useState(-1);
+
   const toggle=(num)=>{
-    console.log(num,panelData)
-    num===panelData?setPanelData(-1):setPanelData(num);
-     
+
+    num===activePanel?setActivePanel(-1):setActivePanel(num);
   }
 
 
 
   return (
-    <>
-        <Panel toggle={toggle} panelData={arrayPanelData} panelDataId={panelData}/>
-        {/* <PanelB toggle={toggle} activePanel={activePanel}/>          
-        <PanelC toggle={toggle} activePanel={activePanel}/>  */}
+    <>  
+        <h3 style={{border:'1px solid red',borderRadius:'10px',backgroundColor:'black',color:'white',width:'80%',height:'auto',margin:'10px auto 5px',padding:'10px'}}>
+          My First Accordion Example with useState</h3>
+        {bookData.map((item,index)=>
+
+        <Panel  key={index} toggle={toggle} heading={item.heading} bookDescription={item.Description} activePanelId={index} activeState={activePanel}/>
+          
+        )
+        }
+        <h4 style={{border:'1px solid red',borderRadius:'10px',backgroundColor:'black',color:'white',width:'50%',height:'auto',margin:'10px auto 5px',padding:'10px'}}>
+          Thank You For Visiting My BookStore</h4>
     </>
   );
 }
